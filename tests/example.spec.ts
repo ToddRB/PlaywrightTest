@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { HeaderPage } from '../.github/workflows/PageObjects/Header';
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -15,4 +16,11 @@ test('get started link', async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
+
+test('Navigate Header', async ({ page }) => {
+  const header = new HeaderPage(page);
+  await header.goto();
+  await header.getStarted();
+  
 });
